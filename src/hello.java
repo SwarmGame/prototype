@@ -5,14 +5,15 @@
  * Time: 10:52 PM
  * To change this template use File | Settings | File Templates.
  */
-import static com.esotericsoftware.kryonet.*;
+import com.esotericsoftware.kryonet.*;
+
 
 import java.io.IOException;
 
 public class hello {
 
     public static void main(String []args){
-        Server server = new Server();
+        com.esotericsoftware.kryonet.Server server = new com.esotericsoftware.kryonet.Server();
         server.start();
         try{
             server.bind(54555, 54777);
