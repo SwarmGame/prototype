@@ -30,13 +30,16 @@ public class SimpleServer extends BasicGame
         simpleCircle = new SimpleCircle();
     }
 
+    // This method is called every time the game window is redrawn
     public void render(GameContainer gc, Graphics g) throws SlickException
     {
-//        org.newdawn.slick.geom.Circle circle = new Circle(100, 100, 10);
         Circle serverCircle = new Circle(simpleCircle.x, simpleCircle.y, simpleCircle.r);
         g.draw(serverCircle);
     }
 
+    // This method would handle events such as mouse movement and keypresses,
+    // but we have no event based actions yet. The method is still included
+    // because it must be implemented in order to extend BasicGame.
     @Override
     public void update(GameContainer gc, int delta) throws SlickException
     {
@@ -58,20 +61,21 @@ public class SimpleServer extends BasicGame
         {
 
         }
+
         server.addListener(new Listener()
         {
             public void received (Connection connection, Object object)
             {
                 if (object instanceof SimpleCircle)
                 {
+                    // A simple circle is sent across the network, and the
+                    // Slick circle object is created from the simple circle.
                     simpleCircle = (SimpleCircle)object;
-
-                    System.out.println("" + simpleCircle.x + simpleCircle.y + simpleCircle.r);
                 }
             }
         });
-        AppGameContainer app = new AppGameContainer( new SimpleServer() );
 
+        AppGameContainer app = new AppGameContainer( new SimpleServer() );
         app.setDisplayMode(800, 600, false);
         app.start();
     }
