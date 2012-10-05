@@ -1,1 +1,20 @@
-Prototype for Swarms game
+Prototype for testing network connections and graphics for the Swarms game
+By Derek Neidecker, Wenzhao Sun, and Alexander Vyushkov
+10/5/2012
+
+The prototype was tested on Windows 7 Enterprise SP1, JDK 1.7.6 and JDK 1.7.7.
+LWJGL 2.8.4 library is used (LWJGL dll files are included to github project).
+
+The following JAVA VM options should be defined in project settings:
+-Djava.library.path=lib\natives-win32  -Dorg.lwjgl.opengl.Display.allowSoftwareOpenGL=true
+This allows the lwjgl library to find the right dll files.
+
+Also, be sure that the entire lib folder is included in the dependencies section of the project.
+
+IMPORTANT!
+If you are using a 32 bit version of java, then you must use the 32 bit dll files, which
+are not included in the project because they are incompatible with our 64 bit installation.
+You must go to http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.8.4/
+and download the latest version of lwjgl. Then copy the 4 32-bit dll files into lib/natives-win32 and
+remove the 64-bit dll files.
+
